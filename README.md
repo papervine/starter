@@ -7,3 +7,5 @@ your own docs, or use it to explore the renderer and reader-auth.
 - **Internal** — pages gated by reader-auth groups (`groups: [...]` frontmatter), used to
   demonstrate and test per-page RBAC. With reader-auth off, these render normally; with it on,
   a reader must be in a listed group.
+
+- **API Reference** — an OpenAPI spec (`openapi.json`) auto-generates per-endpoint pages, exercising the API reference renderer.

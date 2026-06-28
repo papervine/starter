@@ -51,6 +51,15 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Widgets",
+            "openapi": "openapi.json"
+          }
+        ]
       }
     ]
   }
