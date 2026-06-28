@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "description": "A tiny example API for the Papervine starter — exercises the auto-generated API reference (params, request/response schemas, enums, auth)."
   },
-  "servers": [{ "url": "https://api.example.com/v1" }],
+  "servers": [{ "url": "https://httpbin.org/anything", "description": "Live echo server — the interactive \"Try it\" panel sends real requests here, and it mirrors your method, query, headers, and body back as JSON so you can see the round-trip." }],
   "security": [{ "bearerAuth": [] }],
   "paths": {
     "/widgets": {
