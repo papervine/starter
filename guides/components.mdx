@@ -13,3 +13,12 @@ A quick tour of supported components.
 </Tabs>
 
 <Accordion title="Details">Accordions collapse long content.</Accordion>
+
+A fenced `mermaid` block renders as a diagram — it follows the page's light/dark theme:
+
+```mermaid
+graph LR
+  Write["Write MDX"] --> Commit["Commit to Git"]
+  Commit --> Sync["Papervine syncs"]
+  Sync --> Live["Docs go live"]
+```
