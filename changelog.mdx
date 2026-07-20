@@ -1,0 +1,50 @@
+---
+title: "Changelog"
+description: "What's new in Papervine — latest changes first."
+---
+
+## 2025-06-17
+
+### API Reference
+
+- **Widgets API** — four endpoints are now documented via auto-generated API reference pages driven by `openapi.json`. The new pages cover the full CRUD surface:
+
+  | Method | Path | Description |
+  |--------|------|-------------|
+  | `GET` | `/widgets` | List all widgets |
+  | `POST` | `/widgets` | Create a widget |
+  | `GET` | `/widgets/{id}` | Get a single widget |
+  | `DELETE` | `/widgets/{id}` | Delete a widget |
+
+  Any future changes to `openapi.json` will automatically regenerate these pages on the next sync.
+
+### Reader Auth & Group Gating
+
+- **Per-page RBAC** — pages now support a `groups: [...]` frontmatter key. When reader-auth is enabled, a visitor must belong to at least one of the listed groups to view the page; everyone else receives a 404 and the page is hidden from the sidebar.
+- **`public: true` bypass** — setting `public: true` in frontmatter exempts a page from group gating entirely, making it visible to any signed-in reader regardless of group membership.
+- **Independent group evaluation** — group membership checks use an *at-least-one* rule. A reader in `admin` who is not in `beta` will not see beta-gated pages, and a reader in either `admin` or `beta` will see pages listed as `groups: ["admin", "beta"]`. Groups do not imply one another.
+
+  | Page | Gate |
+  |------|------|
+  | Team overview | `admin` only |
+  | Team settings | `admin` only |
+  | Beta program | `beta` only |
+  | Staff | `admin` **or** `beta` |
+
+- **Graceful degradation** — when reader-auth is turned off, all gated pages render normally with no other configuration changes required.
+
+### Components
+
+- **Mermaid diagrams** — fenced ` ```mermaid ``` ` blocks now render as interactive diagrams and automatically follow the site's light/dark theme.
+- **Callouts** — `<Note>` and `<Warning>` blocks render as styled admonitions.
+- **Tabs** — `<Tabs>` / `<Tab>` components let you present alternatives (e.g. `npm` vs `pnpm`) without cluttering the page.
+- **Accordions** — `<Accordion>` collapses long content behind a disclosure toggle.
+
+### Quickstart & CLI
+
+- **`papervine dev .`** — local preview server lets you iterate on docs before committing. Run it from the repo root; the server hot-reloads on file changes.
+- **Three-step setup** documented: edit `docs.json` → write MDX pages → connect the repo to a Papervine site.
+
+### Site Structure
+
+- **Starter template** published — the Papervine Starter repo is a fully working example site you can fork. It covers ungated guides, gated internal pages, and an API reference, making it suitable both as a starting point and as a renderer feature showcase.
